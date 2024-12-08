@@ -6,6 +6,7 @@ import NavigationBar from './components/NavigationBar';
 import Home from './components/Home';
 import Team from './components/Team';
 import Compare from './components/Compare';
+import PokemonDetails from './components/PokemonDetails';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/read" element={<Team />} />
         <Route path="/create" element={<Compare />} />
+        <Route path="/pokemon/:name" element={<PokemonDetails />} />
       </Routes>
     </Router>
   );

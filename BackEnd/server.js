@@ -12,6 +12,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://admin:admin@datarepproject.bhppf.mongodb.net/');
+
 app.get('/', (req, res) => {
     res.send('Hello World');
 });
