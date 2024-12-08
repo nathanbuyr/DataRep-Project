@@ -96,6 +96,16 @@ app.delete('/api/team/:id', async (req, res) => {
   }
 });
 
+app.get('/api/teams', async (req, res) => {
+    try {
+      const teams = await Team.find({});
+      res.json(teams);
+    } catch (error) {
+      console.error('Error fetching teams:', error);
+      res.status(500).json({ message: 'Failed to fetch teams' });
+    }
+  });
+  
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -16,7 +16,7 @@ function App() {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/read" element={<Team />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/create" element={<Compare />} />
         <Route path="/pokemon/:name" element={<PokemonDetails />} />
       </Routes>
