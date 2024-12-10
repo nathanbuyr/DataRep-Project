@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 var Team = () => {
@@ -20,11 +21,20 @@ var Team = () => {
     fetchSavedTeams();
   }, []);
 
+  // Function to handle deletion of a team
+  var handleDelete = async (teamId) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/teams/${teamId}`);
+      setSavedTeams(savedTeams.filter((team) => team._id !== teamId));
+    } catch (error) {
+      console.error('Error deleting team:', error);
+    }
+  };
+
   return (
     <Container>
       <h1 className="text-center my-4">Saved Teams</h1>
 
-      {/* Check if there are saved teams */}
       {savedTeams.length === 0 && (
         <p className="text-center">No teams saved yet!</p>
       )}
@@ -32,7 +42,17 @@ var Team = () => {
       {savedTeams.length > 0 && (
         savedTeams.map((team, index) => (
           <Card key={index} className="mb-4">
-            <Card.Header>Team {index + 1}</Card.Header>
+            <Card.Header>
+              Team {index + 1}
+              <Button
+                variant="danger"
+                size="sm"
+                className="float-end"
+                onClick={() => handleDelete(team._id)}
+              >
+                Delete
+              </Button>
+            </Card.Header>
             <ListGroup variant="flush">
               {team.team.map((pokemon) => (
                 <ListGroup.Item key={pokemon.id}>
@@ -50,7 +70,6 @@ var Team = () => {
       )}
     </Container>
   );
-
 };
 
 export default Team;
