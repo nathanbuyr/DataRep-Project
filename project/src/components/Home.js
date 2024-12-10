@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
-
 var Home = () => {
   var [pokemonList, setPokemonList] = useState([]);
   var [team, setTeam] = useState([]); // State to track the team being built
@@ -95,6 +94,7 @@ var Home = () => {
         {pokemonList.map((pokemon) => (
           <Card
             key={pokemon.id}
+            className="pokemon-card"
             style={{ width: '200px', margin: '10px' }}
           >
             <Card.Img

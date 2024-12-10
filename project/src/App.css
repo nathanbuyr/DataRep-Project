@@ -1,6 +1,64 @@
+
 .App {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('https://external-preview.redd.it/FAU8vQ_sqnnUqb8FBs0rR7q4IO01Dpdww7DvjoY-ggY.jpg?auto=webp&s=cd218cbe0e7daa5de9295d85b34475a7cfe21774');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+/* Style for the Pokémon cards */
+.pokemon-card {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  color: white; /* White text color */
+}
+
+.pokemon-card .card-img-top {
+  border-radius: 10px 10px 0 0; /* Rounded top corners for the image */
+}
+
+.pokemon-card .card-body {
+  padding: 1rem;
   text-align: center;
 }
+
+.pokemon-card .btn {
+  background-color: #007bff; /* Button color */
+  border: none;
+}
+
+.pokemon-card .btn:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+}
+
+.pokemon-card .card-title {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+/* Optional: To make the Pokémon name stand out */
+.pokemon-card .card-title {
+  color: white;
+  font-weight: bold;
+}
+
+/* Make sure the image inside the card isn't stretched */
+.pokemon-card img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+
 
 .App-logo {
   height: 40vmin;
