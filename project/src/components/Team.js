@@ -37,7 +37,7 @@ const Team = () => {
   const handleDelete = async (teamId) => {
     try {
       await axios.delete(`http://localhost:4000/api/teams/${teamId}`); // Delete team by ID
-      setSavedTeams(savedTeams.filter((team) => team._id != teamId)); // Update state
+      setSavedTeams(savedTeams.filter((team) => team._id !== teamId)); // Update state
     } catch (error) {
       console.error('Error deleting team:', error);
     }
@@ -55,10 +55,10 @@ const Team = () => {
     const teamId = editPokemon.teamId; // Get the ID of the team being edited
 
     // Find the team being updated and update its Pokémon list
-    const updatedTeam = savedTeams.find((team) => team._id == teamId);
+    const updatedTeam = savedTeams.find((team) => team._id === teamId);
 
     updatedTeam.team = updatedTeam.team.map((pokemon) => {
-      if (pokemon.id == editPokemon.id) {
+      if (pokemon.id === editPokemon.id) {
         return editedDetails; // Replace with the edited details if IDs match
       } else {
         return pokemon; // Keep the original Pokémon if IDs do not match
@@ -74,7 +74,7 @@ const Team = () => {
       // Update the local state to reflect the changes
       setSavedTeams(
         savedTeams.map((team) => // Iterate over the savedTeams array
-          team._id == teamId      // Check if the current team's ID matches the teamId being updated
+          team._id === teamId      // Check if the current team's ID matches the teamId being updated
             ? updatedTeam         // If it matches, replace the current team with the updated team
             : team                // If it doesn't match, keep the team as is
         )
@@ -92,7 +92,7 @@ const Team = () => {
       <h1 className="text-center my-4">Saved Teams</h1>
 
       {/* Show a message if no teams are saved */}
-      {savedTeams.length == 0 && (
+      {savedTeams.length === 0 && (
         <p className="text-center">No teams saved yet!</p>
       )}
 

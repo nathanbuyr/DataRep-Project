@@ -37,7 +37,7 @@ var Home = () => {
 
   // Add a Pokémon to the team
   var addToTeam = (pokemon) => {
-    if (team.length < 6 && !team.some((member) => member.id == pokemon.id)) {
+    if (team.length < 6 && !team.some((member) => member.id === pokemon.id)) {
       setTeam([...team, pokemon]);
     } else {
       alert('Your team is full or this Pokémon is already in your team!');
@@ -46,7 +46,7 @@ var Home = () => {
 
   // Save the team to the server
   var saveTeam = async () => {
-    if (team.length == 0) {
+    if (team.length === 0) {
       alert('Your team is empty! Add some Pokémon before saving.');
       return;
     }
@@ -72,7 +72,7 @@ var Home = () => {
     var { name, value } = e.target;
     setFilter((prevFilter) => ({ ...prevFilter, [name]: value })); // Spread operator
 
-    if (name == 'search') {
+    if (name === 'search') {
       setFilteredPokemon(
         pokemonList.filter((pokemon) =>
           pokemon.name.toLowerCase().includes(value.toLowerCase())
@@ -80,15 +80,15 @@ var Home = () => {
       );
     }
 
-    if (name == 'type') {
-      if (value == '') {
+    if (name === 'type') {
+      if (value === '') {
         setFilteredPokemon(pokemonList); // Show all Pokémon if no type selected
       } else {
         setFilteredPokemon(
           pokemonList.filter((pokemon) => {
             let hasType = false;
             for (let i = 0; i < pokemon.types.length; i++) {
-              if (pokemon.types[i].type.name == value) {
+              if (pokemon.types[i].type.name === value) {
                 hasType = true;
                 break; 
               }

@@ -79,6 +79,29 @@ app.delete('/api/teams/:id', async (req, res) => {
   }
 });
 
+// PUT route to update a team by ID
+app.put('/api/teams/:id', async (req, res) => {
+  try {
+    const teamId = req.params.id;
+    const updatedData = req.body.team;
+
+    const updatedTeam = await Team.findByIdAndUpdate(
+      teamId,
+      { team: updatedData },
+      { new: true }
+    );
+
+    if (updatedTeam) {
+      res.status(200).json({ message: 'Team updated successfully', team: updatedTeam });
+    } else {
+      res.status(404).json({ error: 'Team not found' });
+    }
+  } catch (error) {
+    console.error('Error updating team:', error);
+    res.status(500).json({ error: 'Failed to update team' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
