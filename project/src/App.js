@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/create" element={<Compare />} />
+          <Route path="/compare" element={<Compare />} />
           <Route path="/pokemon/:name" element={<PokemonDetails />} />
         </Routes>
       </Router>

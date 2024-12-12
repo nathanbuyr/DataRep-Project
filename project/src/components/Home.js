@@ -90,12 +90,12 @@ var Home = () => {
             for (let i = 0; i < pokemon.types.length; i++) {
               if (pokemon.types[i].type.name === value) {
                 hasType = true;
-                break; 
+                break;
               }
             }
             return hasType;
           })
-        )        
+        )
       }
     }
   };

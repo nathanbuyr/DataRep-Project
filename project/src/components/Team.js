@@ -79,7 +79,7 @@ const Team = () => {
             : team                // If it doesn't match, keep the team as is
         )
       );
-      
+
 
       setEditPokemon(null); // Close the edit modal
     } catch (error) {
@@ -106,7 +106,7 @@ const Team = () => {
               size="sm"
               className="float-end"
               onClick={() => handleDelete(team._id)}
-            > 
+            >
               Delete
             </Button>
           </Card.Header>
