@@ -3,10 +3,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 var Home = () => {
   var [pokemonList, setPokemonList] = useState([]);
   var [team, setTeam] = useState([]); // State to track the team being built
+  const navigate = useNavigate(); // Hook to handle navigation
 
   useEffect(() => {
     var fetchPokemon = async () => {
@@ -95,7 +97,8 @@ var Home = () => {
           <Card
             key={pokemon.id}
             className="pokemon-card"
-            style={{ width: '200px', margin: '10px' }}
+            style={{ width: '200px', margin: '10px', cursor: 'pointer' }}
+            onClick={() => navigate(`/pokemon/${pokemon.id}`)} // Navigate to the Pokémon details page
           >
             <Card.Img
               variant="top"
@@ -108,8 +111,10 @@ var Home = () => {
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
               </Card.Title>
               <Button
-                variant="primary"
-                onClick={() => addToTeam(pokemon)}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent triggering navigation
+                  addToTeam(pokemon);
+                }}
               >
                 Add to Team
               </Button>
