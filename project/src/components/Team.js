@@ -74,9 +74,9 @@ const Team = () => {
       // Update the local state to reflect the changes
       setSavedTeams(
         savedTeams.map((team) => // Iterate over the savedTeams array
-          team._id === teamId      // Check if the current team's ID matches the teamId being updated
-            ? updatedTeam         // If it matches, replace the current team with the updated team
-            : team                // If it doesn't match, keep the team as is
+          team._id === teamId
+            ? updatedTeam     
+            : team            
         )
       );
 
